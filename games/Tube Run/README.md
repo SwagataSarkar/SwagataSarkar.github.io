@@ -2,7 +2,7 @@
 
 A reflex-based drag game where you navigate through a winding tube while dodging obstacles. Built with vanilla HTML, CSS, and JavaScript.
 
-**[Play the Game](https://your-github-username.github.io/tube-run)** <!-- Replace with your GitHub Pages URL -->
+**[Play the Game](https://SwagataSarkar.github.io/tube-run)**
 
 ---
 
@@ -75,6 +75,7 @@ Click the **🔊/🔇** button to toggle sound on/off.
 ### Option 2: Clone the repository
 
 ```bash
-git clone https://github.com/your-username/tube-run.git
-cd tube-run
-open tube-run.html
+git clone https://github.com/SwagataSarkar/SwagataSarkar.github.io.git
+cd SwagataSarkar.github.io
+open "games/Tube Run/tube-run.html"
+```

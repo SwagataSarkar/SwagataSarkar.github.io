@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tube Run - With Sound</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #161b22;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            max-width: 920px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, #58a6ff, #3fb950);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b949e;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .instructions {
+            background: #0d1117;
+            border-radius: 12px;
+            padding: 12px 18px;
+            margin-bottom: 12px;
+            border-left: 4px solid #f85149;
+            font-size: 14px;
+            color: #8b949e;
+            line-height: 1.6;
+        }
+
+        .instructions strong {
+            color: #e6edf3;
+        }
+
+        .instructions .danger {
+            color: #f85149;
+            font-weight: 700;
+        }
+
+        .instructions .highlight {
+            color: #f0883e;
+            font-weight: 600;
+        }
+
+        .instructions .success {
+            color: #3fb950;
+            font-weight: 600;
+        }
+
+        .instructions .legend {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .instructions .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .instructions .legend-item .dot {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+
+        .dot.stationary { background: #f85149; }
+        .dot.blinking { background: #f0883e; }
+        .dot.endpoint { background: #3fb950; }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 4px;
+            font-size: 14px;
+            color: #8b949e;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .stats-bar .stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stats-bar .stat .value {
+            color: #e6edf3;
+            font-weight: 600;
+        }
+
+        .stats-bar .stat .value.danger {
+            color: #f85149;
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            background: #0d1117;
+            border-radius: 16px;
+            border: 2px solid #30363d;
+            margin: 8px 0;
+            touch-action: none;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 4px 4px 4px;
+            font-size: 15px;
+            color: #8b949e;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .status-bar .status-text {
+            font-weight: 600;
+        }
+        .status-bar .status-text.ready { color: #58a6ff; }
+        .status-bar .status-text.dragging { color: #f0883e; }
+        .status-bar .status-text.success { color: #3fb950; }
+        .status-bar .status-text.fail { color: #f85149; }
+
+        .score-overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(13, 17, 23, 0.88);
+            border-radius: 14px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(4px);
+            z-index: 10;
+        }
+
+        .score-overlay.visible {
+            display: flex;
+        }
+
+        .score-overlay .big-score {
+            font-size: 64px;
+            font-weight: 800;
+            color: #f0883e;
+            margin-bottom: 4px;
+        }
+
+        .score-overlay .big-score.perfect {
+            color: #3fb950;
+        }
+
+        .score-overlay .score-details {
+            font-size: 18px;
+            color: #8b949e;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .score-overlay .score-details span {
+            color: #e6edf3;
+            font-weight: 600;
+        }
+
+        .score-overlay .streak-display {
+            font-size: 16px;
+            color: #f0883e;
+            margin-top: 6px;
+        }
+
+        .score-overlay .direction-info {
+            font-size: 14px;
+            color: #58a6ff;
+            margin-top: 4px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            padding: 12px 4px 0 4px;
+            border-top: 1px solid #30363d;
+            margin-top: 12px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #238636;
+            color: white;
+        }
+
+        .btn:hover {
+            background: #2ea043;
+            transform: scale(1.02);
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            background: #30363d;
+            color: #e6edf3;
+        }
+
+        .btn-secondary:hover {
+            background: #484f58;
+        }
+
+        .sound-toggle {
+            background: #30363d;
+            color: #e6edf3;
+            padding: 6px 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .sound-toggle:hover {
+            background: #484f58;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 16px; }
+            .score-overlay .big-score { font-size: 44px; }
+            .controls { flex-direction: column; gap: 8px; }
+            .stats-bar { font-size: 12px; }
+            .instructions { font-size: 13px; padding: 10px 14px; }
+            .instructions .legend { gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🌀 Tube Run</h1>
+    <p class="subtitle">Drag from either green circle — <span class="danger">don't touch the walls!</span></p>
+
+    <div class="instructions">
+        <div style="margin-bottom:6px;">
+            <strong>🎯 How to Play:</strong> Drag from one <span class="success">● green</span> circle to the other through the tube.
+            <span class="highlight">Either direction works!</span>
+        </div>
+        <div>
+            <strong>⚠️ Rules:</strong>
+            <span class="danger">Touching the tube walls = instant fail!</span>
+            &nbsp;·&nbsp;
+            <span class="danger">Hitting an obstacle = instant fail!</span>
+        </div>
+        <div>
+            <strong>🧱 Obstacles:</strong>
+            <span class="danger">■ Stationary</span> — weave around them &nbsp;|&nbsp;
+            <span class="highlight">◉ Blinking</span> — wait for them to disappear
+        </div>
+        <div class="legend">
+            <span class="legend-item"><span class="dot endpoint"></span> Drag start/end</span>
+            <span class="legend-item"><span class="dot stationary"></span> Stationary</span>
+            <span class="legend-item"><span class="dot blinking"></span> Blinking</span>
+            <span class="legend-item"><span style="color:#3fb950;">✓</span> Stay centered</span>
+            <span class="legend-item"><span style="color:#f85149;">✗</span> Wall touch = fail</span>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat">🏆 High Score: <span class="value" id="highScoreDisplay">0</span></div>
+        <div class="stat">🔥 Streak: <span class="value" id="streakDisplay">0</span></div>
+        <div class="stat">📏 Tube Width: <span class="value danger" id="widthDisplay">0</span>px</div>
+        <div class="stat">🧱 Obstacles: <span class="value" id="obstacleCount">0</span></div>
+    </div>
+
+    <div class="canvas-wrapper">
+        <canvas id="canvas" width="800" height="400"></canvas>
+        <div class="score-overlay" id="scoreOverlay">
+            <div class="big-score" id="bigScore">0</div>
+            <div class="score-details" id="scoreDetails">
+                Accuracy: <span id="accDisplay">0</span>% &nbsp;·&nbsp;
+                Speed: <span id="speedDisplay">0</span>% &nbsp;·&nbsp;
+                Time: <span id="timeDisplay">0.00</span>s
+            </div>
+            <div class="direction-info" id="directionInfo">→ Left to Right</div>
+            <div class="streak-display" id="streakResult"></div>
+            <button class="btn" id="tryAgainBtn" style="margin-top: 16px;">🔄 Next Round</button>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <span class="status-text ready" id="statusText">✅ Ready — drag from one ● to the other</span>
+        <span id="infoText">Centeredness: —</span>
+    </div>
+
+    <div class="controls">
+        <button class="btn btn-secondary" id="resetBtn">↺ Reset Progress</button>
+        <button class="btn btn-secondary" id="newTubeBtn">🎲 New Tube</button>
+        <button class="sound-toggle" id="soundToggle" title="Toggle sound">🔊</button>
+        <span style="color:#8b949e;font-size:14px;margin-left:auto;">
+            ⚡ Level: <span id="difficultyLevel" style="color:#f85149;font-weight:700;">1</span>
+        </span>
+    </div>
+</div>
+
+<script>
+    // ============================================================
+    //  TUBE RUN — WITH SOUND EFFECTS
+    //  Using Web Audio API for procedural sounds
+    // ============================================================
+
+    // ============================================================
+    //  SOUND ENGINE
+    // ============================================================
+
+    let audioCtx = null;
+    let soundEnabled = true;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function toggleSound() {
+        soundEnabled = !soundEnabled;
+        document.getElementById('soundToggle').textContent = soundEnabled ? '🔊' : '🔇';
+        if (soundEnabled) initAudio();
+    }
+
+    // ----- Sound Generators -----
+
+    function playPop() {
+        if (!soundEnabled) return;
+        try {
+            initAudio();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+            osc.start(audioCtx.currentTime);
+            osc.stop(audioCtx.currentTime + 0.08);
+        } catch(e) { /* ignore */ }
+    }
+
+    function playBuzzer() {
+        if (!soundEnabled) return;
+        try {
+            initAudio();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.3);
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+            osc.start(audioCtx.currentTime);
+            osc.stop(audioCtx.currentTime + 0.3);
+        } catch(e) { /* ignore */ }
+    }
+
+    function playCrash() {
+        if (!soundEnabled) return;
+        try {
+            initAudio();
+            // Noise burst
+            const bufferSize = audioCtx.sampleRate * 0.15;
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = (Math.random() * 2 - 1) * Math.exp(-i / bufferSize * 3);
+            }
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = buffer;
+            const gain = audioCtx.createGain();
+            noise.connect(gain);
+            gain.connect(audioCtx.destination);
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+            noise.start(audioCtx.currentTime);
+            noise.stop(audioCtx.currentTime + 0.15);
+        } catch(e) { /* ignore */ }
+    }
+
+    function playSuccess() {
+        if (!soundEnabled) return;
+        try {
+            initAudio();
+            const notes = [523, 659, 784]; // C5, E5, G5
+            for (let i = 0; i < notes.length; i++) {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.frequency.setValueAtTime(notes[i], audioCtx.currentTime + i * 0.1);
+                gain.gain.setValueAtTime(0.12, audioCtx.currentTime + i * 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i * 0.1 + 0.15);
+                osc.start(audioCtx.currentTime + i * 0.1);
+                osc.stop(audioCtx.currentTime + i * 0.1 + 0.15);
+            }
+        } catch(e) { /* ignore */ }
+    }
+
+    function playDing() {
+        if (!soundEnabled) return;
+        try {
+            initAudio();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1800, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+            osc.start(audioCtx.currentTime);
+            osc.stop(audioCtx.currentTime + 0.12);
+        } catch(e) { /* ignore */ }
+    }
+
+    function playFanfare() {
+        if (!soundEnabled) return;
+        try {
+            initAudio();
+            const notes = [523, 587, 659, 784, 880, 784, 880];
+            for (let i = 0; i < notes.length; i++) {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = i % 2 === 0 ? 'square' : 'sine';
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                const time = audioCtx.currentTime + i * 0.08;
+                osc.frequency.setValueAtTime(notes[i], time);
+                gain.gain.setValueAtTime(0.08, time);
+                gain.gain.exponentialRampToValueAtTime(0.001, time + 0.12);
+                osc.start(time);
+                osc.stop(time + 0.12);
+            }
+        } catch(e) { /* ignore */ }
+    }
+
+    // ============================================================
+    //  GAME CODE (same as before, with sound hooks)
+    // ============================================================
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const TUBE_SEGMENTS = 120;
+    const MIN_TUBE_WIDTH = 8;
+    const START_TUBE_WIDTH = 30;
+    const MAX_TUBE_WIDTH = 35;
+    const START_PADDING = 50;
+    const OBSTACLE_SIZE = 18;
+
+    let tubePoints = [];
+    let obstacles = [];
+    let obstacleAnimTime = 0;
+    let path = [];
+    let isDragging = false;
+    let isComplete = false;
+    let isFailed = false;
+    let dragStartTime = 0;
+    let dragEndTime = 0;
+    let dragDirection = '';
+    let hasPlayedStartSound = false;
+
+    let streak = 0;
+    let totalRounds = 0;
+    let highScore = parseInt(localStorage.getItem('tubeRunHigh')) || 0;
+    let difficultyLevel = 1;
+    let currentTubeWidth = START_TUBE_WIDTH;
+
+    const statusText = document.getElementById('statusText');
+    const infoText = document.getElementById('infoText');
+    const resetBtn = document.getElementById('resetBtn');
+    const newTubeBtn = document.getElementById('newTubeBtn');
+    const tryAgainBtn = document.getElementById('tryAgainBtn');
+    const scoreOverlay = document.getElementById('scoreOverlay');
+    const bigScore = document.getElementById('bigScore');
+    const accDisplay = document.getElementById('accDisplay');
+    const speedDisplay = document.getElementById('speedDisplay');
+    const timeDisplay = document.getElementById('timeDisplay');
+    const streakDisplay = document.getElementById('streakDisplay');
+    const highScoreDisplay = document.getElementById('highScoreDisplay');
+    const widthDisplay = document.getElementById('widthDisplay');
+    const difficultyLevelDisplay = document.getElementById('difficultyLevel');
+    const streakResult = document.getElementById('streakResult');
+    const obstacleCountDisplay = document.getElementById('obstacleCount');
+    const directionInfo = document.getElementById('directionInfo');
+    const soundToggle = document.getElementById('soundToggle');
+
+    soundToggle.addEventListener('click', toggleSound);
+
+    // ============================================================
+    //  Obstacle Generation
+    // ============================================================
+
+    function generateObstacles() {
+        obstacles = [];
+        const numObstacles = Math.min(10, Math.floor((difficultyLevel - 1) / 2.5));
+        obstacleCountDisplay.textContent = numObstacles;
+        if (numObstacles === 0) return;
+
+        const tubeStart = tubePoints[0];
+        const tubeEnd = tubePoints[tubePoints.length - 1];
+        const tubeLength = tubeEnd.x - tubeStart.x;
+        const spacing = tubeLength / (numObstacles + 1);
+
+        for (let i = 0; i < numObstacles; i++) {
+            const t = (i + 1) / (numObstacles + 1);
+            const offset = (Math.random() - 0.5) * spacing * 0.3;
+            const x = Math.max(tubeStart.x + 20, Math.min(tubeEnd.x - 20, tubeStart.x + t * tubeLength + offset));
+
+            let closestIdx = 0;
+            let closestDist = Infinity;
+            for (let j = 0; j < tubePoints.length; j++) {
+                const d = Math.abs(tubePoints[j].x - x);
+                if (d < closestDist) { closestDist = d; closestIdx = j; }
+            }
+
+            const seg = tubePoints[closestIdx];
+            const halfWidth = seg.width / 2 - OBSTACLE_SIZE / 2 - 4;
+            const yPos = seg.y + (Math.random() - 0.5) * (seg.width - OBSTACLE_SIZE - 6);
+            const clampedY = Math.max(seg.y - halfWidth + OBSTACLE_SIZE/2 + 2, 
+                                     Math.min(seg.y + halfWidth - OBSTACLE_SIZE/2 - 2, yPos));
+
+            const type = Math.random() < 0.5 ? 'stationary' : 'blinking';
+            obstacles.push({
+                x: x,
+                y: clampedY,
+                size: OBSTACLE_SIZE + (Math.random() - 0.5) * 6,
+                type: type,
+                blinkSpeed: 0.5 + Math.random() * 1.5,
+                blinkPhase: Math.random() * Math.PI * 2,
+                color: type === 'stationary' ? '#f85149' : '#f0883e',
+                label: type === 'stationary' ? '■' : '◉'
+            });
+        }
+    }
+
+    // ============================================================
+    //  Tube Generation
+    // ============================================================
+
+    function generateTube() {
+        const w = canvas.width;
+        const h = canvas.height;
+
+        let baseWidth = Math.max(MIN_TUBE_WIDTH, START_TUBE_WIDTH - (difficultyLevel - 1) * 0.8);
+        const randomOffset = (Math.random() - 0.5) * 6;
+        currentTubeWidth = Math.max(MIN_TUBE_WIDTH, Math.min(MAX_TUBE_WIDTH, baseWidth + randomOffset));
+        widthDisplay.textContent = Math.round(currentTubeWidth);
+        widthDisplay.style.color = currentTubeWidth < 15 ? '#f85149' : '#e6edf3';
+
+        const amplitude = 40 + Math.random() * 80;
+        const frequency = 0.008 + Math.random() * 0.025;
+        const phase = Math.random() * Math.PI * 2;
+        const startY = h / 2 + (Math.random() - 0.5) * 60;
+        const endY = h / 2 + (Math.random() - 0.5) * 60;
+
+        tubePoints = [];
+        for (let i = 0; i < TUBE_SEGMENTS; i++) {
+            const t = i / (TUBE_SEGMENTS - 1);
+            const x = START_PADDING + t * (w - START_PADDING * 2);
+            const smoothY = startY + (endY - startY) * t;
+            const waveY = Math.sin(x * frequency + phase) * amplitude * Math.sin(t * Math.PI);
+            const y = smoothY + waveY;
+            const margin = currentTubeWidth / 2 + 10;
+            const clampedY = Math.max(margin, Math.min(h - margin, y));
+            let segWidth = Math.max(MIN_TUBE_WIDTH, currentTubeWidth + (Math.random() - 0.5) * 4);
+            tubePoints.push({ x, y: clampedY, width: segWidth });
+        }
+
+        for (let i = 1; i < tubePoints.length - 1; i++) {
+            tubePoints[i].width = (tubePoints[i-1].width + tubePoints[i].width + tubePoints[i+1].width) / 3;
+        }
+        tubePoints[0].width = Math.max(tubePoints[0].width, 40);
+        tubePoints[tubePoints.length - 1].width = Math.max(tubePoints[tubePoints.length - 1].width, 40);
+
+        generateObstacles();
+    }
+
+    // ============================================================
+    //  Collision Detection
+    // ============================================================
+
+    function getTubeBoundsAtPoint(px, py) {
+        let closestIdx = 0;
+        let closestDist = Infinity;
+        for (let i = 0; i < tubePoints.length; i++) {
+            const d = Math.hypot(px - tubePoints[i].x, py - tubePoints[i].y);
+            if (d < closestDist) { closestDist = d; closestIdx = i; }
+        }
+        const seg = tubePoints[closestIdx];
+        const halfWidth = seg.width / 2;
+        const distFromCenter = Math.abs(py - seg.y);
+        return {
+            isInside: distFromCenter < halfWidth,
+            centeredness: Math.max(0, Math.min(100, (1 - distFromCenter / halfWidth) * 100))
+        };
+    }
+
+    function checkObstacleCollision(px, py) {
+        for (const obs of obstacles) {
+            if (obs.type === 'blinking') {
+                const blinkValue = Math.sin(obstacleAnimTime * obs.blinkSpeed + obs.blinkPhase);
+                if (blinkValue < 0) continue;
+            }
+            const dist = Math.hypot(px - obs.x, py - obs.y);
+            if (dist < obs.size / 2 + 3) return true;
+        }
+        return false;
+    }
+
+    // ============================================================
+    //  Drawing
+    // ============================================================
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.strokeStyle = '#1c2333';
+        ctx.lineWidth = 0.5;
+        for (let x = 0; x < canvas.width; x += 40) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, canvas.height);
+            ctx.stroke();
+        }
+
+    
