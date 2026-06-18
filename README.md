@@ -1,1 +1,1 @@
-Simple games to pass a short time. Most are offline games playable on the browser.
+I build random things that catch my fancy, just for the love of building. That's about it.
