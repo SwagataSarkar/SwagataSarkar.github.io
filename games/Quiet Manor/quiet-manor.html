@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Quiet Manor</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,"Times New Roman",serif;background:#1d1b2d;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
+#manor{max-width:680px;width:100%;margin:0 auto;position:relative;min-height:580px;overflow:hidden;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.4)}
+@keyframes fk{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.85;transform:scale(.97)}}
+@keyframes tw{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sf{0%{opacity:1}100%{opacity:0;filter:blur(3px);transform:scale(.95)}}
+@keyframes st{0%{opacity:.5;transform:translateY(0)}100%{opacity:0;transform:translateY(-16px)}}
+@keyframes mh{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,-4px)}}
+@keyframes cs{0%,100%{transform:rotate(0)}50%{transform:rotate(2deg)}}
+@keyframes fm{0%{opacity:.15;transform:scale(1)}20%{opacity:.45;transform:scale(1.08)}40%{opacity:.25;transform:scale(.95)}60%{opacity:.55;transform:scale(1.05)}80%{opacity:.2;transform:scale(.98)}100%{opacity:.15;transform:scale(1)}}
+.r{display:none;animation:fi .5s ease-out}
+.r.a{display:block}
+.b{cursor:pointer;border:1px solid transparent;padding:8px 20px;border-radius:20px;font-family:inherit;font-size:13px;transition:all .2s;background:rgba(255,255,255,.1);color:inherit}
+.b:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
+.d{cursor:pointer;transition:transform .3s}
+.d:hover{transform:translateY(-4px)}
+.p{cursor:pointer;padding:5px 14px;border-radius:14px;border:1px solid rgba(90,61,43,.3);background:transparent;font-family:inherit;font-size:12px;transition:all .2s}
+.p:hover,.p.x{background:#5a3d2b;color:#f5f0e8;border-color:#5a3d2b}
+textarea{font-family:inherit}
+</style>
+</head>
+<body>
+
+<div id="manor">
+
+<!-- FOYER -->
+<div id="foyer" class="r a" style="background:linear-gradient(180deg,#e8ddd0,#d4c5b0);min-height:580px;padding:28px 20px;text-align:center;color:#3d2b1f;position:relative;">
+
+
+  <div style="position:absolute;right:210px;top:20px;width:54px;height:76px;background:#2d2b3d;border-radius:27px 27px 3px 3px;border:2px solid #5a4a3a;overflow:hidden;">
+    <div style="width:14px;height:14px;background:#f5e6d0;border-radius:50%;position:absolute;top:10px;left:8px;opacity:.9;box-shadow:0 0 6px rgba(245,230,208,.4)"></div>
+    <div style="width:3px;height:3px;background:#fff;border-radius:50%;position:absolute;top:6px;left:28px;opacity:.7"></div>
+    <div style="width:2px;height:2px;background:#fff;border-radius:50%;position:absolute;top:18px;left:38px;opacity:.5"></div>
+    <div style="width:2px;height:2px;background:#fff;border-radius:50%;position:absolute;top:30px;left:12px;opacity:.6"></div>
+    <div style="width:3px;height:3px;background:#fff;border-radius:50%;position:absolute;top:36px;left:32px;opacity:.4"></div>
+    <div style="width:20px;height:8px;background:#5a5a7a;border-radius:10px;position:absolute;top:44px;left:8px;opacity:.6"></div>
+    <div style="width:14px;height:6px;background:#5a5a7a;border-radius:7px;position:absolute;top:50px;left:26px;opacity:.5"></div>
+  </div>
+  <div style="margin:0 auto 8px;width:130px;height:120px;position:relative;">
+    <svg viewBox="0 0 100 90" style="width:100%;height:100%">
+      <ellipse cx="50" cy="78" rx="42" ry="10" fill="#8b7355" opacity=".7"/>
+      <rect x="18" y="52" width="64" height="26" rx="6" fill="#a08060" opacity=".5"/>
+      <ellipse cx="50" cy="56" rx="18" ry="22" fill="#c4b5a0"/><ellipse cx="50" cy="50" rx="13" ry="16" fill="#d4c5b0"/>
+      <circle cx="50" cy="32" r="14" fill="#c4b5a0"/><circle cx="50" cy="30" r="12" fill="#d4c5b0"/>
+      <circle cx="38" cy="22" r="6" fill="#c4b5a0"/><circle cx="38" cy="22" r="3.5" fill="#e8ddd0"/>
+      <circle cx="62" cy="22" r="6" fill="#c4b5a0"/><circle cx="62" cy="22" r="3.5" fill="#e8ddd0"/>
+      <!-- colorful hat -->
+      <rect x="42" y="10" width="16" height="3" rx="1" fill="#6b2d3a"/><rect x="44" y="0" width="12" height="12" rx="1" fill="#8b4a5a"/>
+      <circle cx="46" cy="30" r="1.3" fill="#3d2b1f"/><circle cx="54" cy="30" r="1.3" fill="#3d2b1f"/>
+      <ellipse cx="50" cy="34" rx="2.5" ry="2" fill="#e8a090"/><path d="M47 38 Q50 40 53 38" stroke="#3d2b1f" stroke-width=".8" fill="none"/>
+      <line x1="40" y1="32" x2="32" y2="30" stroke="#3d2b1f" stroke-width=".5"/><line x1="40" y1="34" x2="32" y2="36" stroke="#3d2b1f" stroke-width=".5"/>
+      <line x1="60" y1="32" x2="68" y2="30" stroke="#3d2b1f" stroke-width=".5"/><line x1="60" y1="34" x2="68" y2="36" stroke="#3d2b1f" stroke-width=".5"/>
+      <!-- teal vest with gold buttons -->
+      <path d="M42 50 Q50 56 58 50 L58 64 Q50 68 42 64 Z" fill="#4a7a8b"/>
+      <circle cx="50" cy="56" r="1.2" fill="#f5e6d0"/><circle cx="50" cy="62" r="1.2" fill="#f5e6d0"/>
+      <ellipse cx="40" cy="54" rx="5" ry="3.5" fill="#c4b5a0" transform="rotate(-15 40 54)"/><ellipse cx="60" cy="54" rx="5" ry="3.5" fill="#c4b5a0" transform="rotate(15 60 54)"/>
+      <!-- green scarf -->
+      <path d="M42 44 Q50 48 58 44" stroke="#5a7a4a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M54 45 L57 52" stroke="#5a7a4a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- rosy cheeks -->
+      <circle cx="43" cy="33" r="2" fill="#e8a0a0" opacity=".4"/>
+      <circle cx="57" cy="33" r="2" fill="#e8a0a0" opacity=".4"/>
+      <!-- open book in lap -->
+      <path d="M42 68 Q50 64 58 68 L58 72 Q50 68 42 72 Z" fill="#6b4a8b" stroke="#4a2d6b" stroke-width=".5"/>
+      <path d="M42 68 Q50 64 58 68" stroke="#4a2d6b" stroke-width=".5" fill="none"/>
+      <line x1="50" y1="66" x2="50" y2="70" stroke="#4a2d6b" stroke-width=".5"/>
+      <path d="M44 69 L48 67 M52 67 L56 69" stroke="#c9a96e" stroke-width=".4" fill="none"/>
+      <!-- teacup -->
+      <path d="M62 66 Q62 72 68 72 Q74 72 74 66 Z" fill="#c94a5a"/>
+      <path d="M74 67 Q76 67 76 69 Q76 71 74 71" stroke="#c94a5a" stroke-width="1.2" fill="none"/>
+      <ellipse cx="68" cy="66" rx="6" ry="1.5" fill="#f5e6d0" opacity=".9"/>
+      <circle cx="68" cy="68" r="1" fill="#f5e6d0" opacity=".6"/>
+      <!-- tail -->
+      <path d="M68 68 Q80 72 76 58" stroke="#c4b5a0" stroke-width="2" fill="none"/>
+    </svg>
+  </div>
+  <h1 style="font-size:26px;font-weight:400;margin:6px 0;letter-spacing:1px">The Quiet Manor</h1>
+  <p style="font-style:italic;color:#6b5344;margin:6px 0 20px;font-size:14px">"Do come in. The fire is warm, and the evening is quite at your disposal."</p>
+  <p style="color:#8a7865;margin-bottom:24px;font-size:13px">Choose a room below. Each offers a different way to quiet the mind.</p>
+  <div style="position:absolute;left:190px;top:78px;width:52px;height:38px;">
+    <div style="width:52px;height:32px;background:#5a4a3a;border-radius:6px 6px 3px 3px;overflow:hidden;position:relative">
+      <div style="position:absolute;bottom:0;left:5px;width:14px;height:22px;background:linear-gradient(0deg,#d4784a,#e8a060);border-radius:50% 50% 0 0;animation:fk 2s infinite;filter:blur(.5px)"></div>
+      <div style="position:absolute;bottom:0;left:19px;width:18px;height:28px;background:linear-gradient(0deg,#c96840,#d4a060);border-radius:50% 50% 0 0;animation:fk 2.5s infinite .3s;filter:blur(.5px)"></div>
+      <div style="position:absolute;bottom:0;right:5px;width:12px;height:20px;background:linear-gradient(0deg,#d4784a,#e8a060);border-radius:50% 50% 0 0;animation:fk 2.2s infinite .6s;filter:blur(.5px)"></div>
+      <div style="position:absolute;bottom:0;left:10px;width:6px;height:10px;background:#fff;opacity:.3;border-radius:50% 50% 0 0;animation:fm 1.2s infinite .2s"></div>
+      <div style="position:absolute;bottom:0;left:24px;width:8px;height:14px;background:#fff;opacity:.25;border-radius:50% 50% 0 0;animation:fm 1.4s infinite .5s"></div>
+      <div style="position:absolute;bottom:0;right:10px;width:5px;height:8px;background:#fff;opacity:.2;border-radius:50% 50% 0 0;animation:fm 1.1s infinite .7s"></div>
+    </div>
+    <div style="width:64px;height:5px;background:#8a7865;border-radius:3px;position:absolute;bottom:0;left:-6px"></div>
+  </div>
+  <div style="display:flex;justify-content:center;gap:20px;margin-top:6px;flex-wrap:wrap">
+    <div class="d" onclick="go('letter')" style="text-align:center;width:110px">
+      <div style="width:64px;height:90px;background:linear-gradient(180deg,#a08060,#8b6f50);border-radius:32px 32px 3px 3px;border:2px solid #6b5344;position:relative;box-shadow:0 3px 10px rgba(61,43,31,.2)">
+        <div style="width:5px;height:5px;background:#c9a96e;border-radius:50%;position:absolute;right:10px;top:48%"></div>
+      </div>
+      <p style="margin-top:8px;font-size:13px;font-weight:500">The Letter Desk</p>
+      <p style="font-size:11px;color:#8a7865;font-style:italic;margin-top:2px">Write, seal, and let go</p>
+    </div>
+    <div class="d" onclick="go('breathing')" style="text-align:center;width:110px">
+      <div style="width:64px;height:90px;background:linear-gradient(180deg,#6b7a8f,#556070);border-radius:32px 32px 3px 3px;border:2px solid #4a5560;position:relative;box-shadow:0 3px 10px rgba(61,43,31,.2)">
+        <div style="width:5px;height:5px;background:#b4c8dc;border-radius:50%;position:absolute;right:10px;top:48%"></div>
+      </div>
+      <p style="margin-top:8px;font-size:13px;font-weight:500">The Breathing Room</p>
+      <p style="font-size:11px;color:#8a7865;font-style:italic;margin-top:2px">Find your rhythm</p>
+    </div>
+    <div class="d" onclick="go('night')" style="text-align:center;width:110px">
+      <div style="width:64px;height:90px;background:linear-gradient(180deg,#6b5a7a,#554a60);border-radius:32px 32px 3px 3px;border:2px solid #4a3d55;position:relative;box-shadow:0 3px 10px rgba(61,43,31,.2)">
+        <div style="width:5px;height:5px;background:#c8b4dc;border-radius:50%;position:absolute;right:10px;top:48%"></div>
+      </div>
+      <p style="margin-top:8px;font-size:13px;font-weight:500">The Night Watch</p>
+      <p style="font-size:11px;color:#8a7865;font-style:italic;margin-top:2px">Tend to the sleeping house</p>
+    </div>
+  </div>
+  <div style="position:absolute;left:12px;bottom:12px;width:32px;height:42px">
+    <svg viewBox="0 0 24 32" style="width:100%;height:100%"><path d="M12 30 Q6 20 4 10 Q12 14 12 30" fill="#6b8a5a"/><path d="M12 30 Q18 18 20 8 Q12 12 12 30" fill="#5a7a4a"/><path d="M12 30 Q10 16 12 4 Q14 16 12 30" fill="#7a9a6a"/><rect x="8" y="26" width="8" height="6" rx="2" fill="#8b7355"/></svg>
+  </div>
+  <div style="position:absolute;right:16px;bottom:14px;width:28px;height:38px">
+    <svg viewBox="0 0 20 28" style="width:100%;height:100%"><path d="M10 26 Q4 16 2 6 Q10 10 10 26" fill="#8a9a6a"/><path d="M10 26 Q16 14 18 4 Q10 8 10 26" fill="#7a8a5a"/><path d="M10 26 Q8 12 10 2 Q12 12 10 26" fill="#9aaa7a"/><rect x="6" y="22" width="8" height="6" rx="2" fill="#a08060"/></svg>
+  </div>
+  <div style="position:absolute;left:60px;bottom:10px;width:26px;height:34px">
+    <svg viewBox="0 0 24 32" style="width:100%;height:100%"><path d="M12 30 Q7 20 5 12 Q12 15 12 30" fill="#5a8a6a"/><path d="M12 30 Q17 18 19 10 Q12 13 12 30" fill="#4a7a5a"/><rect x="9" y="26" width="6" height="5" rx="2" fill="#7a6a55"/></svg>
+  </div>
+  <div style="position:absolute;right:60px;bottom:12px;width:24px;height:32px">
+    <svg viewBox="0 0 20 28" style="width:100%;height:100%"><path d="M10 26 Q5 16 3 8 Q10 11 10 26" fill="#7a9a7a"/><path d="M10 26 Q15 14 17 6 Q10 9 10 26" fill="#6a8a6a"/><rect x="7" y="22" width="6" height="5" rx="2" fill="#8a7a65"/></svg>
+  </div>
+  <div style="position:absolute;left:158px;bottom:10px;width:22px;height:30px">
+    <svg viewBox="0 0 20 28" style="width:100%;height:100%"><path d="M10 26 Q5 16 3 8 Q10 11 10 26" fill="#6b8a5a"/><path d="M10 26 Q15 14 17 6 Q10 9 10 26" fill="#5a7a4a"/><rect x="7" y="22" width="6" height="5" rx="2" fill="#7a6a55"/></svg>
+  </div>
+  <div style="position:absolute;right:158px;bottom:10px;width:22px;height:30px">
+    <svg viewBox="0 0 20 28" style="width:100%;height:100%"><path d="M10 26 Q5 16 3 8 Q10 11 10 26" fill="#8a9a7a"/><path d="M10 26 Q15 14 17 6 Q10 9 10 26" fill="#7a8a5a"/><rect x="7" y="22" width="6" height="5" rx="2" fill="#8a7a65"/></svg>
+  </div>
+</div>
+
+<!-- LETTER DESK -->
+<div id="letter" class="r" style="background:linear-gradient(180deg,#d4c5b0,#c4b5a0);min-height:580px;padding:28px 20px;color:#3d2b1f;position:relative">
+  <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px">
+    <div style="width:48px;height:48px;flex-shrink:0">
+      <svg viewBox="0 0 48 48" style="width:100%;height:100%"><circle cx="24" cy="26" r="12" fill="#c4b5a0"/><circle cx="24" cy="24" r="10" fill="#d4c5b0"/><circle cx="17" cy="17" r="4" fill="#c4b5a0"/><circle cx="17" cy="17" r="2.5" fill="#e8ddd0"/><circle cx="31" cy="17" r="4" fill="#c4b5a0"/><circle cx="31" cy="17" r="2.5" fill="#e8ddd0"/><rect x="19" y="5" width="10" height="2.5" rx="1" fill="#3d2b1f"/><rect x="20" y="-1" width="8" height="8" rx="1" fill="#3d2b1f"/><circle cx="22" cy="24" r="1.2" fill="#3d2b1f"/><circle cx="26" cy="24" r="1.2" fill="#3d2b1f"/><ellipse cx="24" cy="27" rx="1.8" ry="1.3" fill="#e8a090"/><path d="M22 30 Q24 31 26 30" stroke="#3d2b1f" stroke-width=".7" fill="none"/><path d="M16 32 Q24 37 32 32 L32 40 Q24 43 16 40 Z" fill="#6b5344"/><circle cx="24" cy="36" r=".8" fill="#c9a96e"/></svg>
+    </div>
+    <div style="background:rgba(245,240,232,.9);padding:12px 14px;border-radius:10px;position:relative;flex:1">
+      <div style="position:absolute;left:-5px;top:16px;width:10px;height:10px;background:rgba(245,240,232,.9);transform:rotate(45deg)"></div>
+      <p style="font-size:13px;line-height:1.5;margin:0;color:#5a4a3a">"Here, you may write what weighs on you&mdash;a letter to yourself, to the universe, or to no one at all. When you seal it, the words are released. Nothing is kept. Nothing is judged."</p>
+    </div>
+  </div>
+  <div style="display:flex;gap:6px;justify-content:center;margin-bottom:12px;flex-wrap:wrap">
+    <span style="font-size:12px;color:#8a7865;align-self:center;margin-right:2px">Theme:</span>
+    <button class="p x" onclick="setT(this,'reflection')">Reflection</button>
+    <button class="p" onclick="setT(this,'gratitude')">Gratitude</button>
+    <button class="p" onclick="setT(this,'release')">Release</button>
+    <button class="p" onclick="setT(this,'comfort')">Comfort</button>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:10px">
+    <p id="prompt" style="font-style:italic;color:#6b5344;font-size:14px;margin:0;text-align:center">"What would you say to a dear friend who felt exactly as you do now?"</p>
+    <button onclick="newPrompt()" style="background:none;border:none;cursor:pointer;padding:3px;border-radius:50%;color:#8a7865;transition:transform .3s" onmouseover="this.style.transform='rotate(180deg)'" onmouseout="this.style.transform='rotate(0)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+    </button>
+  </div>
+  <div style="background:#f5f0e8;border-radius:8px;padding:20px;box-shadow:0 2px 14px rgba(61,43,31,.1);position:relative;max-width:440px;margin:0 auto">
+    <div style="position:absolute;top:-8px;right:18px;width:14px;height:26px;background:linear-gradient(180deg,#8a9a7a,#6b8a5a);border-radius:3px">
+      <div style="width:7px;height:11px;background:radial-gradient(circle at 40% 60%,#fff 20%,#e8a060 50%,#d4784a 80%);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;position:absolute;top:-8px;left:3.5px;animation:fk 1.5s infinite;box-shadow:0 0 8px rgba(232,160,96,.4),0 0 16px rgba(212,120,74,.2)"></div>
+    </div>
+    <textarea id="lt" placeholder="Dear..." style="width:100%;min-height:160px;background:transparent;border:none;outline:none;font-family:inherit;font-size:14px;line-height:1.7;color:#3d2b1f;resize:vertical"></textarea>
+    <div style="text-align:center;margin-top:12px">
+      <button id="seal" onclick="seal()" style="width:56px;height:56px;border-radius:50%;background:#8b4a5a;border:2px solid #6b3545;color:#f5f0e8;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:0 auto;transition:all .3s;box-shadow:0 3px 10px rgba(139,74,90,.3)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </button>
+      <p style="font-size:11px;color:#8a7865;margin-top:4px">Seal</p><p id="sealmsg" style="font-size:12px;color:#6b4a3a;margin-top:6px;opacity:0;transition:opacity .5s;font-style:italic">Your words drift into the ether, released and unburdened.</p>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:20px">
+    <button class="b" onclick="go('foyer')" style="border-color:rgba(90,61,43,.3);color:#5a3d2b">&larr; Return to the Foyer</button>
+  </div>
+</div>
+
+<!-- BREATHING ROOM -->
+<div id="breathing" class="r" style="background:linear-gradient(180deg,#3d3b4d,#2d2b3d);min-height:580px;padding:28px 20px;color:#d4c5b0;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;pointer-events:none">
+    <div style="width:2px;height:2px;background:#fff;border-radius:50%;position:absolute;top:10%;left:15%;animation:tw 3s infinite"></div>
+    <div style="width:2px;height:2px;background:#fff;border-radius:50%;position:absolute;top:20%;left:80%;animation:tw 4s infinite .5s"></div>
+    <div style="width:1px;height:1px;background:#fff;border-radius:50%;position:absolute;top:8%;left:45%;animation:tw 2.5s infinite 1s"></div>
+    <div style="width:2px;height:2px;background:#fff;border-radius:50%;position:absolute;top:35%;left:10%;animation:tw 3.5s infinite .3s"></div>
+    <div style="width:1px;height:1px;background:#fff;border-radius:50%;position:absolute;top:15%;left:65%;animation:tw 2s infinite .7s"></div>
+  </div>
+  <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;position:relative;z-index:1">
+    <div style="width:48px;height:48px;flex-shrink:0">
+      <svg viewBox="0 0 48 48" style="width:100%;height:100%"><circle cx="24" cy="26" r="12" fill="#a89880"/><circle cx="24" cy="24" r="10" fill="#b8a890"/><circle cx="17" cy="17" r="4" fill="#a89880"/><circle cx="17" cy="17" r="2.5" fill="#d4c5b0"/><circle cx="31" cy="17" r="4" fill="#a89880"/><circle cx="31" cy="17" r="2.5" fill="#d4c5b0"/><rect x="19" y="5" width="10" height="2.5" rx="1" fill="#3d2b1f"/><rect x="20" y="-1" width="8" height="8" rx="1" fill="#3d2b1f"/><circle cx="22" cy="24" r="1.2" fill="#3d2b1f"/><circle cx="26" cy="24" r="1.2" fill="#3d2b1f"/><ellipse cx="24" cy="27" rx="1.8" ry="1.3" fill="#c4a090"/><path d="M22 30 Q24 31 26 30" stroke="#3d2b1f" stroke-width=".7" fill="none"/><path d="M16 32 Q24 37 32 32 L32 40 Q24 43 16 40 Z" fill="#5a4a3a"/><circle cx="24" cy="36" r=".8" fill="#c9a96e"/></svg>
+    </div>
+    <div style="background:rgba(255,255,255,.06);padding:12px 14px;border-radius:10px;position:relative;flex:1;border:1px solid rgba(255,255,255,.08)">
+      <div style="position:absolute;left:-5px;top:16px;width:10px;height:10px;background:rgba(255,255,255,.06);transform:rotate(45deg);border-left:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)"></div>
+      <p style="font-size:13px;line-height:1.5;margin:0;color:#c4b5a0">"In this room, a soft lantern will guide your breath. You may close your eyes and simply follow its rhythm. Choose a pace that feels gentle to you."</p>
+    </div>
+  </div>
+  <h2 style="text-align:center;font-size:20px;font-weight:400;margin:6px 0;color:#e8ddd0">The Breathing Room</h2>
+  <p style="text-align:center;font-size:13px;color:#a89880;margin-bottom:20px;max-width:380px;margin-left:auto;margin-right:auto">A quiet guided breathing exercise. A pulsing lantern will expand and contract to cue your breath.</p>
+  <p style="text-align:center;font-size:13px;color:#c4b5b0;margin-bottom:10px">Choose your rhythm:</p>
+  <div style="display:flex;gap:12px;justify-content:center;margin-bottom:24px">
+    <div id="r444" onclick="selR('444')" style="cursor:pointer;padding:14px 20px;border-radius:10px;border:2px solid #c9a96e;background:rgba(201,169,110,.15);text-align:center;min-width:90px;transition:all .2s">
+      <p style="font-size:18px;font-weight:500;margin:0;color:#e8ddd0">4 &middot; 4 &middot; 4</p>
+      <p style="font-size:12px;margin:3px 0 0;color:#c9a96e">Box Breathing</p>
+      <p style="font-size:11px;margin:2px 0 0;color:#a89880">Gentle &amp; steady</p>
+    </div>
+    <div id="r478" onclick="selR('478')" style="cursor:pointer;padding:14px 20px;border-radius:10px;border:2px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);text-align:center;min-width:90px;transition:all .2s">
+      <p style="font-size:18px;font-weight:500;margin:0;color:#e8ddd0">4 &middot; 7 &middot; 8</p>
+      <p style="font-size:12px;margin:3px 0 0;color:#c9a96e">Relaxation</p>
+      <p style="font-size:11px;margin:2px 0 0;color:#a89880">Deep calming</p>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:center;margin-bottom:20px;position:relative;height:180px;align-items:center">
+    <div id="lr3" style="position:absolute;width:160px;height:160px;border:1px solid rgba(212,165,116,.15);border-radius:50%;transition:all 1s ease-in-out"></div>
+    <div id="lr2" style="position:absolute;width:124px;height:124px;border:1px solid rgba(212,165,116,.25);border-radius:50%;transition:all 1s ease-in-out"></div>
+    <div id="lr1" style="position:absolute;width:88px;height:88px;border:1px solid rgba(212,165,116,.4);border-radius:50%;transition:all 1s ease-in-out"></div>
+    <div id="lc" style="width:60px;height:60px;background:radial-gradient(circle at 40% 40%,#fff5e0 20%,#d4a574 50%,#b08050 80%);border-radius:50%;box-shadow:0 0 30px rgba(212,165,116,.4),0 0 60px rgba(212,165,116,.2);transition:all 1s ease-in-out;position:relative;z-index:2"></div>
+  </div>
+  <div style="text-align:center;margin-bottom:6px">
+    <p id="bp" style="font-size:22px;font-weight:400;margin:0;color:#e8ddd0;letter-spacing:2px">Ready</p>
+    <p id="bt" style="font-size:13px;color:#a89880;margin:4px 0 0"></p>
+  </div>
+  <div style="display:flex;gap:10px;justify-content:center;margin-bottom:20px">
+    <button id="bb" class="b" onclick="begB()" style="border-color:rgba(255,255,255,.2);color:#e8ddd0;min-width:70px">Begin</button>
+    <button id="bpz" class="b" onclick="pauB()" style="border-color:rgba(255,255,255,.2);color:#e8ddd0;min-width:70px;opacity:.4;pointer-events:none">Pause</button>
+    <button id="be" class="b" onclick="endB()" style="border-color:rgba(255,255,255,.2);color:#e8ddd0;min-width:70px;opacity:.4;pointer-events:none">End</button>
+  </div>
+  <div style="text-align:center">
+    <button class="b" onclick="go('foyer')" style="border-color:rgba(255,255,255,.15);color:#a89880">&larr; Return to the Foyer</button>
+  </div>
+</div>
+
+<!-- NIGHT WATCH -->
+<div id="night" class="r" style="background:linear-gradient(180deg,#2d2b3d,#1d1b2d);min-height:580px;padding:28px 20px;color:#c4b5b0;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;pointer-events:none">
+    <div style="width:2px;height:2px;background:#fff;border-radius:50%;position:absolute;top:8%;left:20%;animation:tw 3s infinite"></div>
+    <div style="width:1px;height:1px;background:#fff;border-radius:50%;position:absolute;top:12%;left:70%;animation:tw 4s infinite .5s"></div>
+    <div style="width:2px;height:2px;background:#fff;border-radius:50%;position:absolute;top:5%;left:50%;animation:tw 2.5s infinite 1s"></div>
+    <div style="width:1px;height:1px;background:#fff;border-radius:50%;position:absolute;top:18%;left:35%;animation:tw 3.5s infinite .3s"></div>
+    <div style="width:2px;height:2px;background:#fff;border-radius:50%;position:absolute;top:10%;left:85%;animation:tw 2s infinite .7s"></div>
+  </div>
+  <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;position:relative;z-index:1">
+    <div style="width:48px;height:48px;flex-shrink:0;position:relative">
+      <svg viewBox="0 0 48 48" style="width:100%;height:100%"><circle cx="24" cy="26" r="12" fill="#a89880"/><circle cx="24" cy="24" r="10" fill="#b8a890"/><circle cx="17" cy="17" r="4" fill="#a89880"/><circle cx="17" cy="17" r="2.5" fill="#d4c5b0"/><circle cx="31" cy="17" r="4" fill="#a89880"/><circle cx="31" cy="17" r="2.5" fill="#d4c5b0"/><rect x="19" y="5" width="10" height="2.5" rx="1" fill="#3d2b1f"/><rect x="20" y="-1" width="8" height="8" rx="1" fill="#3d2b1f"/><circle cx="22" cy="24" r="1.2" fill="#3d2b1f"/><circle cx="26" cy="24" r="1.2" fill="#3d2b1f"/><ellipse cx="24" cy="27" rx="1.8" ry="1.3" fill="#c4a090"/><path d="M22 30 Q24 31 26 30" stroke="#3d2b1f" stroke-width=".7" fill="none"/><path d="M16 32 Q24 37 32 32 L32 40 Q24 43 16 40 Z" fill="#5a4a3a"/><circle cx="24" cy="36" r=".8" fill="#c9a96e"/></svg>
+      <div style="position:absolute;top:24px;right:-6px;width:12px;height:16px;background:linear-gradient(180deg,#f5e6d0,#e8d5c0);border-radius:2px;z-index:2"><div style="width:5px;height:6px;background:radial-gradient(circle at 40% 60%,#fff 20%,#e8a060 50%,#d4784a 80%);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;position:absolute;top:-3px;left:3.5px;animation:fk 1.5s infinite"></div></div>
+    </div>
+    <div style="background:rgba(255,255,255,.06);padding:12px 14px;border-radius:10px;position:relative;flex:1;border:1px solid rgba(255,255,255,.08)">
+      <div style="position:absolute;left:-5px;top:16px;width:10px;height:10px;background:rgba(255,255,255,.06);transform:rotate(45deg);border-left:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)"></div>
+      <p id="nt" style="font-size:13px;line-height:1.5;margin:0;color:#c4b5a0">"The house has settled, but a few small things still need a gentle hand. Walk with me through the rooms, and tend to what calls for care. There is no hurry."</p>
+    </div>
+  </div>
+  <h2 id="nh" style="text-align:center;font-size:20px;font-weight:400;margin:6px 0;color:#e8ddd0">The Night Watch</h2>
+  <p id="ns" style="text-align:center;font-size:13px;color:#a89880;margin-bottom:20px">Tend to the sleeping house, one room at a time.</p>
+  <div id="dots" style="display:flex;gap:6px;justify-content:center;margin-bottom:24px">
+    <div id="d0" style="width:7px;height:7px;border-radius:50%;background:#c9a96e;transition:all .3s"></div>
+    <div id="d1" style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);transition:all .3s"></div>
+    <div id="d2" style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);transition:all .3s"></div>
+    <div id="d3" style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);transition:all .3s"></div>
+    <div id="d4" style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);transition:all .3s"></div>
+  </div>
+  <div id="nscene" style="max-width:420px;margin:0 auto;text-align:center">
+    <div id="hw">
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px">
+        <div class="d" onclick="enter('nursery')" style="text-align:center"><div style="width:50px;height:72px;background:linear-gradient(180deg,#6b5a4a,#5a4a3a);border-radius:25px 25px 2px 2px;border:2px solid #4a3d35;position:relative;overflow:hidden"><div style="position:absolute;bottom:0;left:3px;right:3px;height:55%;background:radial-gradient(ellipse at 50% 100%,rgba(212,165,116,.25),transparent);border-radius:0 0 18px 18px"></div><div style="width:4px;height:4px;background:#c9a96e;border-radius:50%;position:absolute;right:8px;top:45%"></div></div><p style="font-size:11px;margin-top:5px;color:#a89880">Nursery</p></div>
+        <div class="d" onclick="enter('library')" style="text-align:center"><div style="width:50px;height:72px;background:linear-gradient(180deg,#5a5a6a,#4a4a5a);border-radius:25px 25px 2px 2px;border:2px solid #3d3d4d;position:relative;overflow:hidden"><div style="position:absolute;bottom:0;left:3px;right:3px;height:55%;background:radial-gradient(ellipse at 50% 100%,rgba(180,200,220,.2),transparent);border-radius:0 0 18px 18px"></div><div style="width:4px;height:4px;background:#b4c8dc;border-radius:50%;position:absolute;right:8px;top:45%"></div></div><p style="font-size:11px;margin-top:5px;color:#a89880">Library</p></div>
+        <div class="d" onclick="enter('conservatory')" style="text-align:center"><div style="width:50px;height:72px;background:linear-gradient(180deg,#5a6b5a,#4a5a4a);border-radius:25px 25px 2px 2px;border:2px solid #3d4a3d;position:relative;overflow:hidden"><div style="position:absolute;bottom:0;left:3px;right:3px;height:55%;background:radial-gradient(ellipse at 50% 100%,rgba(160,200,160,.2),transparent);border-radius:0 0 18px 18px"></div><div style="width:4px;height:4px;background:#a0c8a0;border-radius:50%;position:absolute;right:8px;top:45%"></div></div><p style="font-size:11px;margin-top:5px;color:#a89880">Conservatory</p></div>
+        <div class="d" onclick="enter('kitchen')" style="text-align:center"><div style="width:50px;height:72px;background:linear-gradient(180deg,#6b5a4a,#5a4a3a);border-radius:25px 25px 2px 2px;border:2px solid #4a3d35;position:relative;overflow:hidden"><div style="position:absolute;bottom:0;left:3px;right:3px;height:55%;background:radial-gradient(ellipse at 50% 100%,rgba(220,180,140,.2),transparent);border-radius:0 0 18px 18px"></div><div style="width:4px;height:4px;background:#dcb48c;border-radius:50%;position:absolute;right:8px;top:45%"></div></div><p style="font-size:11px;margin-top:5px;color:#a89880">Kitchen</p></div>
+        <div class="d" onclick="enter('attic')" style="text-align:center"><div style="width:50px;height:72px;background:linear-gradient(180deg,#5a5a6a,#4a4a5a);border-radius:25px 25px 2px 2px;border:2px solid #3d3d4d;position:relative;overflow:hidden"><div style="position:absolute;bottom:0;left:3px;right:3px;height:55%;background:radial-gradient(ellipse at 50% 100%,rgba(200,180,220,.2),transparent);border-radius:0 0 18px 18px"></div><div style="width:4px;height:4px;background:#c8b4dc;border-radius:50%;position:absolute;right:8px;top:45%"></div></div><p style="font-size:11px;margin-top:5px;color:#a89880">Attic</p></div>
+      </div>
+    </div>
+    <div id="rm-nursery" style="display:none">
+      <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:24px;border:1px solid rgba(255,255,255,.08);margin-bottom:16px">
+        <p style="font-size:15px;color:#e8ddd0;margin-bottom:16px">&#129428; The Nursery</p>
+        <p style="font-size:13px;color:#a89880;margin-bottom:20px">A small hedgehog sleeps curled beneath the window, but the night-light keeps him awake.</p>
+        <div style="width:100px;height:68px;margin:0 auto 16px;padding-top:8px">
+          <svg viewBox="0 0 100 68" style="width:100%;height:100%"><rect x="16" y="8" width="68" height="52" rx="3" fill="#1d1b2d" stroke="#4a4a5a" stroke-width="2"/><rect x="49" y="8" width="2" height="52" fill="#4a4a5a"/><rect x="16" y="32" width="68" height="2" fill="#4a4a5a"/><circle cx="34" cy="24" r="6" fill="#e8ddd0" opacity=".8"/><ellipse cx="50" cy="56" rx="18" ry="10" fill="#8a7865"/><circle cx="66" cy="50" r="7" fill="#a89880"/><circle cx="68" cy="48" r="1.2" fill="#3d2b1f"/><circle cx="71" cy="48" r="1.2" fill="#3d2b1f"/><ellipse cx="69" cy="51" rx="1.2" ry=".8" fill="#c4a090"/><path d="M42 48 L40 42 M46 46 L45 40 M50 45 L50 39 M54 46 L55 40 M58 48 L60 42" stroke="#6b5a4a" stroke-width="1.2" fill="none"/><rect id="lampbody" x="46" y="14" width="4" height="10" fill="#5a4a3a"/><ellipse id="lamptop" cx="48" cy="13" rx="5" ry="3" fill="#f5e6d0"/><circle id="lampglow" cx="48" cy="13" r="12" fill="#f5e6d0" opacity=".25"/></svg>
+        </div>
+        <button id="bn" class="b" onclick="tend('nursery')" style="border-color:rgba(201,169,110,.4);color:#e8ddd0">Switch off the lamp</button>
+        <p id="mn" style="font-size:12px;color:#a89880;margin-top:10px;opacity:0;transition:opacity .5s">The room darkens. The hedgehog sighs and sleeps peacefully.</p>
+      </div>
+      <button class="b" onclick="back()" style="border-color:rgba(255,255,255,.15);color:#a89880">&larr; Return to the hallway</button>
+    </div>
+    <div id="rm-library" style="display:none">
+      <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:24px;border:1px solid rgba(255,255,255,.08);margin-bottom:16px">
+        <p style="font-size:15px;color:#e8ddd0;margin-bottom:16px">&#128218; The Library</p>
+        <p style="font-size:13px;color:#a89880;margin-bottom:20px">A candle still burns on the reading desk.</p>
+        <div style="width:100px;height:68px;margin:0 auto 16px;padding-top:8px">
+          <svg viewBox="0 0 100 68" style="width:100%;height:100%"><rect x="16" y="42" width="68" height="6" rx="2" fill="#5a4a3a"/><rect x="24" y="48" width="5" height="12" fill="#4a3d35"/><rect x="71" y="48" width="5" height="12" fill="#4a3d35"/><rect x="46" y="26" width="8" height="16" rx="1" fill="#f5e6d0"/><rect x="48" y="24" width="4" height="4" rx="1" fill="#3d2b1f"/><ellipse id="lf" cx="50" cy="18" rx="4" ry="7" fill="url(#fg)" opacity=".9"/><defs><radialGradient id="fg"><stop offset="0%" stop-color="#fff"/><stop offset="40%" stop-color="#e8a060"/><stop offset="100%" stop-color="#d4784a"/></radialGradient></defs><rect x="20" y="34" width="5" height="10" rx="1" fill="#6b3545"/><rect x="26" y="32" width="5" height="12" rx="1" fill="#35456b"/><rect x="32" y="36" width="5" height="8" rx="1" fill="#4a6b35"/></svg>
+        </div>
+        <button id="bl" class="b" onclick="tend('library')" style="border-color:rgba(201,169,110,.4);color:#e8ddd0">Softly blow out the candle</button>
+        <p id="ml" style="font-size:12px;color:#a89880;margin-top:10px;opacity:0;transition:opacity .5s">The room darkens to moonlight. The pages rest.</p>
+      </div>
+      <button class="b" onclick="back()" style="border-color:rgba(255,255,255,.15);color:#a89880">&larr; Return to the hallway</button>
+    </div>
+    <div id="rm-conservatory" style="display:none">
+      <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:24px;border:1px solid rgba(255,255,255,.08);margin-bottom:16px">
+        <p style="font-size:15px;color:#e8ddd0;margin-bottom:16px">&#127800; The Conservatory</p>
+        <p style="font-size:13px;color:#a89880;margin-bottom:28px">A night-blooming flower has unfurled beside a small brass can.</p>
+        <div style="width:100px;height:68px;margin:0 auto 16px;padding-top:8px">
+          <svg viewBox="0 0 100 68" style="width:100%;height:100%"><path d="M32 52 L36 64 L64 64 L68 52 Z" fill="#8b7355"/><path d="M50 52 Q50 38 50 28" stroke="#5a7a4a" stroke-width="2" fill="none"/><ellipse cx="42" cy="42" rx="7" ry="3.5" fill="#6b8a5a" transform="rotate(-15 42 42)"/><ellipse cx="58" cy="40" rx="7" ry="3.5" fill="#6b8a5a" transform="rotate(15 58 40)"/><ellipse cx="50" cy="22" rx="5" ry="9" fill="#c9a96e" transform="rotate(0 50 22)"/><ellipse cx="50" cy="22" rx="5" ry="9" fill="#d4b87a" transform="rotate(72 50 22)"/><ellipse cx="50" cy="22" rx="5" ry="9" fill="#c9a96e" transform="rotate(144 50 22)"/><ellipse cx="50" cy="22" rx="5" ry="9" fill="#d4b87a" transform="rotate(216 50 22)"/><ellipse cx="50" cy="22" rx="5" ry="9" fill="#c9a96e" transform="rotate(288 50 22)"/><circle cx="50" cy="22" r="3.5" fill="#e8ddd0"/><g id="watercan"><path d="M8 52 L8 44 Q8 40 12 40 L16 40 Q20 40 20 44 L20 52 Z" fill="#b8a060"/><path d="M20 44 L26 40" stroke="#b8a060" stroke-width="2" fill="none"/><ellipse cx="14" cy="40" rx="6" ry="2" fill="#a09050"/></g></svg>
+        </div>
+        <button id="bc" class="b" onclick="tend('conservatory')" style="border-color:rgba(201,169,110,.4);color:#e8ddd0">Water it with the brass can</button>
+        <p id="mc" style="font-size:12px;color:#a89880;margin-top:10px;opacity:0;transition:opacity .5s">The petals glisten. A faint sweetness fills the air.</p>
+      </div>
+      <button class="b" onclick="back()" style="border-color:rgba(255,255,255,.15);color:#a89880">&larr; Return to the hallway</button>
+    </div>
+    <div id="rm-kitchen" style="display:none">
+      <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:24px;border:1px solid rgba(255,255,255,.08);margin-bottom:16px">
+        <p style="font-size:15px;color:#e8ddd0;margin-bottom:16px">&#127850; The Kitchen</p>
+        <p style="font-size:13px;color:#a89880;margin-bottom:20px">A kettle hums softly on the hob.</p>
+        <div style="width:100px;height:68px;margin:0 auto 16px;padding-top:8px">
+          <svg viewBox="0 0 100 68" style="width:100%;height:100%"><rect x="24" y="42" width="52" height="5" rx="2" fill="#4a4a5a"/><rect x="28" y="47" width="4" height="8" fill="#3d3d4d"/><rect x="48" y="47" width="4" height="8" fill="#3d3d4d"/><rect x="68" y="47" width="4" height="8" fill="#3d3d4d"/><path id="kk" d="M40 42 Q40 26 50 26 Q60 26 60 42 Z" fill="#8a9a9a"/><path d="M60 34 Q66 30 66 38" stroke="#8a9a9a" stroke-width="2.5" fill="none"/><rect x="47" y="22" width="6" height="5" rx="1.5" fill="#6a7a7a"/><circle cx="48" cy="18" r="1.5" fill="#fff" opacity=".4" style="animation:st 2s infinite"/><circle cx="51" cy="14" r="1.2" fill="#fff" opacity=".3" style="animation:st 2s infinite .5s"/><circle cx="50" cy="10" r=".8" fill="#fff" opacity=".2" style="animation:st 2s infinite 1s"/></svg>
+        </div>
+        <button id="bk" class="b" onclick="tend('kitchen')" style="border-color:rgba(201,169,110,.4);color:#e8ddd0">Lift it off the hob</button>
+        <p id="mk" style="font-size:12px;color:#a89880;margin-top:10px;opacity:0;transition:opacity .5s">The hum fades. The kitchen settles into silence.</p>
+      </div>
+      <button class="b" onclick="back()" style="border-color:rgba(255,255,255,.15);color:#a89880">&larr; Return to the hallway</button>
+    </div>
+    <div id="rm-attic" style="display:none">
+      <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:24px;border:1px solid rgba(255,255,255,.08);margin-bottom:16px">
+        <p style="font-size:15px;color:#e8ddd0;margin-bottom:16px">&#128330; The Attic</p>
+        <p style="font-size:13px;color:#a89880;margin-bottom:20px">A gentle ghost lingers in the corner, shivering beneath a thin sheet.</p>
+        <div style="width:100px;height:68px;margin:0 auto 16px;padding-top:8px">
+          <svg viewBox="0 0 100 68" style="width:100%;height:100%"><rect x="24" y="12" width="52" height="44" rx="2" fill="#1d1b2d" stroke="#4a4a5a" stroke-width="2"/><rect x="49" y="12" width="2" height="44" fill="#4a4a5a"/><rect x="24" y="32" width="52" height="2" fill="#4a4a5a"/><circle cx="62" cy="24" r="5" fill="#e8ddd0" opacity=".7"/><path d="M26 12 Q32 34 26 56 L42 56 Q36 34 42 12 Z" fill="#8a7a6a" opacity=".85"/><g id="ghost" style="animation:mh 4s infinite"><path d="M28 56 Q28 42 36 42 Q44 42 44 56 Z" fill="#e8ddd0" opacity=".5"/><circle cx="33" cy="48" r="1" fill="#3d2b1f" opacity=".6"/><circle cx="39" cy="48" r="1" fill="#3d2b1f" opacity=".6"/></g><rect id="blanket" x="46" y="50" width="18" height="10" rx="2" fill="#8a7a6a" opacity=".8" style="transition:transform .5s"/></svg>
+        </div>
+        <button id="ba" class="b" onclick="tend('attic')" style="border-color:rgba(201,169,110,.4);color:#e8ddd0">Tuck the blanket around the ghost</button>
+        <p id="ma" style="font-size:12px;color:#a89880;margin-top:10px;opacity:0;transition:opacity .5s">The ghost stills, warmth returning, and fades into peaceful sleep.</p>
+      </div>
+      <button class="b" onclick="back()" style="border-color:rgba(255,255,255,.15);color:#a89880">&larr; Return to the hallway</button>
+    </div>
+    <div id="end-scene" style="display:none">
+      <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:32px 24px;border:1px solid rgba(255,255,255,.08);margin-bottom:16px">
+        <div style="width:80px;height:60px;margin:0 auto 16px">
+          <svg viewBox="0 0 80 60" style="width:100%;height:100%"><circle cx="20" cy="15" r="1" fill="#fff" opacity=".8"/><circle cx="40" cy="8" r="1.2" fill="#fff" opacity=".6"/><circle cx="60" cy="18" r="1" fill="#fff" opacity=".9"/><circle cx="30" cy="30" r=".8" fill="#fff" opacity=".5"/><circle cx="55" cy="35" r="1" fill="#fff" opacity=".7"/><circle cx="15" cy="40" r=".6" fill="#fff" opacity=".4"/><circle cx="70" cy="45" r="1.2" fill="#fff" opacity=".6"/><path d="M20 50 Q40 30 60 50" stroke="#c9a96e" stroke-width="1" fill="none" opacity=".3"/></svg>
+        </div>
+        <p style="font-size:15px;color:#e8ddd0;margin-bottom:12px;font-style:italic">"All is well. The house sleeps, and so may you."</p>
+        <p style="font-size:13px;color:#a89880">The corridor fades to a peaceful starry view.</p>
+      </div>
+      <button class="b" onclick="go('foyer')" style="border-color:rgba(255,255,255,.15);color:#a89880">&larr; Return to the Foyer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function go(id){document.querySelectorAll('.r').forEach(e=>e.classList.remove('a'));document.getElementById(id).classList.add('a');if(id==='night'){renderHall()}}
+
+const prompts={reflection:["What would you say to a dear friend who felt exactly as you do now?","What truth have you been carrying that needs a gentle witness?","When did you last feel truly at peace?"],gratitude:["What small thing today made the world feel softer?","Who has shown you kindness without being asked?","What do you love about the quiet moments?"],release:["What weight are you ready to set down?","What no longer serves the person you are becoming?","Write a farewell to something that has troubled you."],comfort:["What would your kindest self say to you right now?","Describe a place where you have always felt safe.","What do you need to hear most today?"]};
+let theme='reflection',pi=0;
+function setT(el,t){document.querySelectorAll('.p').forEach(e=>e.classList.remove('x'));el.classList.add('x');theme=t;pi=0;document.getElementById('prompt').textContent='"'+prompts[theme][0]+'"'}
+function newPrompt(){pi=(pi+1)%prompts[theme].length;document.getElementById('prompt').textContent='"'+prompts[theme][pi]+'"'}
+function seal(){const t=document.getElementById('lt'),s=document.getElementById('seal'),m=document.getElementById('sealmsg');if(!t.value.trim())return;t.style.animation='sf 1.2s forwards';s.style.transform='scale(1.1)';m.style.opacity='1';setTimeout(()=>{t.value='';t.style.animation='';s.style.transform='';m.style.opacity='0';newPrompt()},3400)}
+
+let rhythm='444',brTimer=null,brPhase=0,brRunning=false;
+function selR(r){rhythm=r;document.getElementById('r444').style.borderColor=r==='444'?'#c9a96e':'rgba(255,255,255,.15)';document.getElementById('r444').style.background=r==='444'?'rgba(201,169,110,.15)':'rgba(255,255,255,.05)';document.getElementById('r478').style.borderColor=r==='478'?'#c9a96e':'rgba(255,255,255,.15)';document.getElementById('r478').style.background=r==='478'?'rgba(201,169,110,.15)':'rgba(255,255,255,.05)'}
+function setL(s,op){const c=document.getElementById('lc'),r1=document.getElementById('lr1'),r2=document.getElementById('lr2'),r3=document.getElementById('lr3');c.style.transform='scale('+s+')';c.style.boxShadow='0 0 '+(30*s)+'px rgba(212,165,116,'+(.4*op)+'),0 0 '+(60*s)+'px rgba(212,165,116,'+(.2*op)+')';r1.style.transform='scale('+s+')';r1.style.opacity=op;r2.style.transform='scale('+(s*.85)+')';r2.style.opacity=op;r3.style.transform='scale('+(s*.7)+')';r3.style.opacity=op}
+function begB(){if(brRunning)return;brRunning=true;document.getElementById('bb').style.opacity='.4';document.getElementById('bb').style.pointerEvents='none';document.getElementById('bpz').style.opacity='1';document.getElementById('bpz').style.pointerEvents='auto';document.getElementById('be').style.opacity='1';document.getElementById('be').style.pointerEvents='auto';runB()}
+function runB(){if(!brRunning)return;const p=['Inhale...','Hold...','Exhale...'],t=rhythm==='444'?[4,4,4]:[4,7,8];document.getElementById('bp').textContent=p[brPhase];let sec=t[brPhase];document.getElementById('bt').textContent=sec+' seconds';if(brPhase===0)setL(1.5,1);else if(brPhase===1)setL(1.5,.7);else setL(1,.3);brTimer=setInterval(()=>{sec--;document.getElementById('bt').textContent=sec+' seconds';if(sec<=0){clearInterval(brTimer);brPhase=(brPhase+1)%3;runB()}},1000)}
+function pauB(){brRunning=false;clearInterval(brTimer);document.getElementById('bb').style.opacity='1';document.getElementById('bb').style.pointerEvents='auto';document.getElementById('bpz').style.opacity='.4';document.getElementById('bpz').style.pointerEvents='none';document.getElementById('bp').textContent='Paused';document.getElementById('bt').textContent=''}
+function endB(){brRunning=false;clearInterval(brTimer);brPhase=0;document.getElementById('bp').textContent='Ready';document.getElementById('bt').textContent='';setL(1,.6);document.getElementById('bb').style.opacity='1';document.getElementById('bb').style.pointerEvents='auto';document.getElementById('bpz').style.opacity='.4';document.getElementById('bpz').style.pointerEvents='none';document.getElementById('be').style.opacity='.4';document.getElementById('be').style.pointerEvents='none'}
+
+const rooms=['nursery','library','conservatory','kitchen','attic'];let done=new Set();
+function renderHall(){document.getElementById('hw').style.display='block';rooms.forEach((r,i)=>{document.getElementById('rm-'+r).style.display='none';const d=document.getElementById('d'+i);d.style.background=done.has(r)?'#c9a96e':'rgba(255,255,255,.2)'});document.getElementById('end-scene').style.display='none';document.getElementById('nh').textContent='The Night Watch';document.getElementById('ns').textContent='Tend to the sleeping house, one room at a time.';document.getElementById('nt').textContent='"The house has settled, but a few small things still need a gentle hand. Walk with me through the rooms, and tend to what calls for care. There is no hurry."'}
+function enter(r){document.getElementById('hw').style.display='none';rooms.forEach(x=>document.getElementById('rm-'+x).style.display='none');document.getElementById('rm-'+r).style.display='block';if(done.has(r)){document.getElementById('b'+r[0]).style.display='none';document.getElementById('m'+r[0]).style.opacity='1'}}
+function back(){if(done.size===5){document.getElementById('hw').style.display='none';rooms.forEach(r=>document.getElementById('rm-'+r).style.display='none');document.getElementById('end-scene').style.display='block';document.getElementById('nh').textContent='All is Well';document.getElementById('ns').textContent='The house sleeps.';document.getElementById('nt').textContent='"Rest now. The night is kind."'}else{renderHall()}}
+function tend(r){done.add(r);const btn=document.getElementById('b'+r[0]),msg=document.getElementById('m'+r[0]);btn.style.opacity='0';btn.style.pointerEvents='none';btn.style.transition='opacity .4s';msg.style.opacity='1';if(r==='conservatory'){document.getElementById('watercan').style.transition='transform .8s ease-out';document.getElementById('watercan').style.transform='translate(26px,-18px) rotate(25deg)';setTimeout(()=>{document.getElementById('watercan').style.transform='translate(0,0) rotate(0)'},1200);}if(r==='library')document.getElementById('lf').style.opacity='0';if(r==='kitchen')document.getElementById('kk').style.transform='translateY(-8px)';if(r==='nursery'){document.getElementById('lampglow').style.opacity='0';document.getElementById('lamptop').style.fill='#3d3d4d';document.getElementById('lampbody').style.fill='#2d2d3d';}if(r==='attic'){document.getElementById('blanket').style.transform='translate(-14px,-2px)';document.getElementById('ghost').style.opacity='0.3';document.getElementById('ghost').style.transition='opacity 1s';}setTimeout(()=>{btn.style.display='none'},400)}
+</script>
+
+</div>
+</body>
+</html>
