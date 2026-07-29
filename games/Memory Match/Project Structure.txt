@@ -1,0 +1,4 @@
+Memory Match/
+├── memory-match.html      # Complete game (single file)
+├── README.md              # Instructions
+└── LICENSE                # MIT License
