@@ -1,0 +1,4 @@
+Quiet Manor/
+├── quiet-manor.html       # Complete game (single file)
+├── README.md              # This file
+└── LICENSE                # MIT License
